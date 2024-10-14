@@ -7,6 +7,56 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="header">
+      <h1>Library</h1>
+    </div>
+    <div class="dialog-container">
+      <dialog class="dialog">
+        <form action="" id="inputForm">
+          <div class="form-row">
+            <label for="title"></label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="author"></label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="no-of-pages"></label>
+            <input
+              type="number"
+              name="no-of-pages"
+              id="no-of-pages"
+              placeholder="Number of pages"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="read-status"> I have already read this book!</label>
+            <input type="checkbox" name="read-status" id="read-status" />
+          </div>
+          <div class="form-row">
+            <button id="submit-button" type="submit">Submit</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+    <div class="main-content">
+      <button id="add-book-button">Add a New Book</button>
+    </div>
+    <div class="footer"></div>
     <script type="module" src="./scripts.js"></script>
   </body>
 </html>
