@@ -189,6 +189,7 @@ function toggleHasRead(index) {
 const booksReadElem = document.querySelector("#books-read");
 const booksUnreadElem = document.querySelector("#books-unread");
 const totalBooksElem = document.querySelector("#total-books");
+const deleteAllButton = document.querySelector("#delete-all-button");
 
 function updateStats() {
   const totalBooks = library.length;
@@ -199,6 +200,12 @@ function updateStats() {
   booksReadElem.textContent = `Books Read: ${booksRead}`;
   booksUnreadElem.textContent = `Books Yet to Read: ${booksUnread}`;
 }
+
+deleteAllButton.addEventListener("click", () => {
+  library.length = 0;
+  displayCards();
+  updateStats();
+});
 
 displayCards();
 updateStats();
