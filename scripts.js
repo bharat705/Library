@@ -100,6 +100,7 @@ inputForm.addEventListener("submit", (event) => {
     // Output the form values
     addBookToLibrary(title, author, numberOfPages, hasRead);
     displayCards();
+    updateStats();
 
     dialog.close();
     inputForm.reset();
@@ -162,11 +163,28 @@ function displayCards() {
 function removeBook(index) {
   library.splice(index, 1);
   displayCards();
+  updateStats();
 }
 
 function toggleHasRead(index) {
   library[index].toggleReadStatus();
   displayCards();
+  updateStats();
+}
+
+const booksReadElem = document.querySelector("#books-read");
+const booksUnreadElem = document.querySelector("#books-unread");
+const totalBooksElem = document.querySelector("#total-books");
+
+function updateStats() {
+  const totalBooks = library.length;
+  const booksRead = library.filter((book) => book.hasRead).length;
+  const booksUnread = totalBooks - booksRead;
+
+  totalBooksElem.textContent = `Total Books: ${totalBooks}`;
+  booksReadElem.textContent = `Books Read: ${booksRead}`;
+  booksUnreadElem.textContent = `Books Yet to Read: ${booksUnread}`;
 }
 
 displayCards();
+updateStats();
