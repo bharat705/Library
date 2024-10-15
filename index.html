@@ -12,7 +12,7 @@
     </div>
     <div class="dialog-container">
       <dialog class="dialog">
-        <form action="" id="inputForm">
+        <form id="input-form" method="dialog">
           <div class="form-row">
             <label for="title"></label>
             <input
@@ -47,14 +47,19 @@
             <label for="read-status"> I have already read this book!</label>
             <input type="checkbox" name="read-status" id="read-status" />
           </div>
+
           <div class="form-row">
-            <button id="submit-button" type="submit">Submit</button>
+            <button id="cancel-button" type="button">Cancel</button>
+            <button type="submit" id="submit-button">Submit</button>
           </div>
         </form>
       </dialog>
     </div>
     <div class="main-content">
-      <button id="add-book-button">Add a New Book</button>
+      <div>
+        <button id="add-book-button">Add a New Book</button>
+      </div>
+      <div id="cards-container"></div>
     </div>
     <div class="footer"></div>
     <script type="module" src="./scripts.js"></script>
