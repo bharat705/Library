@@ -241,13 +241,14 @@ input[type="number"] {
 .title {
   text-transform: capitalize;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #e67e22;
   border-bottom: 2px solid #fa7501;
 }
 
 .author {
   text-transform: capitalize;
+  font-weight: 500;
   font-size: 1.25rem;
   font-style: italic;
   color: #1abc9c;
