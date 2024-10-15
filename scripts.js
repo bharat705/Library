@@ -49,7 +49,7 @@ function addBookToLibrary(title, author, numberOfPages, hasRead) {
   library.push(newBook);
 }
 
-const dialog = document.querySelector("dialog");
+const dialog = document.querySelector("#dialog");
 const inputForm = document.querySelector("#input-form");
 const addBookButton = document.querySelector("#add-book-button");
 const submitButton = document.querySelector("#submit-button");
@@ -65,7 +65,6 @@ cancelButton.addEventListener("click", (event) => {
 });
 
 dialog.addEventListener("close", (e) => {
-  console.log(dialog.returnValue);
   inputForm.reset();
 });
 
@@ -117,9 +116,9 @@ function displayCards() {
 
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
-    hasReadDiv.textContent = book.hasRead
-      ? "Read Already"
-      : "Yet to read";
+    hasReadDiv.textContent = book.hasRead ? "Read Already" : "Yet to read";
     cardsDiv.appendChild(hasReadDiv);
   });
 }
+
+displayCards();
