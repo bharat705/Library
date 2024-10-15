@@ -196,6 +196,7 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   padding: 0 170px;
+  margin-bottom: 50px;
 }
 
 .add-book-button-container {
