@@ -123,15 +123,23 @@ function displayCards() {
     titleDiv.textContent = book.title;
     cardsDiv.appendChild(titleDiv);
 
+    let authorAndPagesDiv = document.createElement("div");
+    authorAndPagesDiv.className = "author-and-pages";
+
     let authorDiv = document.createElement("div");
     authorDiv.className = "author";
     authorDiv.textContent = book.author;
-    cardsDiv.appendChild(authorDiv);
+    authorAndPagesDiv.appendChild(authorDiv);
 
     let pagesDiv = document.createElement("div");
     pagesDiv.className = "no-of-pages";
     pagesDiv.textContent = `${book.numberOfPages} pages`;
-    cardsDiv.appendChild(pagesDiv);
+    authorAndPagesDiv.appendChild(pagesDiv);
+
+    cardsDiv.appendChild(authorAndPagesDiv);
+
+    let hasReadAndRemoveDiv = document.createElement("div");
+    hasReadAndRemoveDiv.className = "read-status-remove-button-container";
 
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
@@ -139,14 +147,16 @@ function displayCards() {
     readToggleButton.className = "read-toggle-button";
     readToggleButton.textContent = book.hasRead ? "Read" : "Yet to Read";
     hasReadDiv.appendChild(readToggleButton);
-    cardsDiv.appendChild(hasReadDiv);
+    hasReadAndRemoveDiv.appendChild(hasReadDiv);
 
     let removeDiv = document.createElement("div");
     let removeButton = document.createElement("button");
     removeButton.className = "remove-button";
     removeButton.textContent = "Remove";
     removeDiv.appendChild(removeButton);
-    cardsDiv.appendChild(removeDiv);
+    hasReadAndRemoveDiv.appendChild(removeDiv);
+
+    cardsDiv.appendChild(hasReadAndRemoveDiv);
 
     removeButton.addEventListener("click", () => {
       removeBook(index);

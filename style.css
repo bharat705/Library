@@ -48,8 +48,8 @@ h6 {
 /* my styles */
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 
   font-family: "Open Sans", sans-serif;
   background: #f0f4f8;
@@ -89,7 +89,7 @@ dialog::backdrop {
 }
 
 .book-stats {
-  padding: 20px 150px;
+  padding: 20px 120px;
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -102,7 +102,7 @@ dialog::backdrop {
   align-content: center;
   gap: 15px;
 
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
 }
 
 #total-books {
@@ -129,6 +129,7 @@ dialog::backdrop {
 .main-content {
   display: flex;
   flex-direction: column;
+  padding: 0 170px;
 }
 
 .add-book-button-container {
@@ -145,28 +146,30 @@ dialog::backdrop {
 
 #cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 20px;
   padding: 20px;
+  background-color: #f4f6f8;
 }
 
 .cards {
   background-color: #ffffff;
   border: 1px sold #e0e0e0;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
+  justify-content: space-between;
 }
 
 .cards:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .title {
@@ -174,6 +177,7 @@ dialog::backdrop {
   font-size: 1.5rem;
   font-weight: bold;
   color: #e67e22;
+  border-bottom: 2px solid #fa7501;
 }
 
 .author {
@@ -187,6 +191,18 @@ dialog::backdrop {
 .read-status {
   font-size: 1rem;
   color: #555555;
+}
+
+.author-and-pages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.read-status-remove-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 button {
