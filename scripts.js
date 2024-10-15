@@ -49,6 +49,14 @@ Book.prototype.toggleReadStatus = function () {
   this.hasRead = !this.hasRead;
 };
 
+function isDuplicateBook(title, author) {
+  return library.some(
+    (book) =>
+      book.title.toLowerCase() === title.toLowerCase() &&
+      book.author.toLowerCase() === author.toLowerCase()
+  );
+}
+
 function addBookToLibrary(title, author, numberOfPages, hasRead) {
   let newBook = new Book(title, author, numberOfPages, hasRead);
   library.push(newBook);
@@ -59,6 +67,7 @@ const inputForm = document.querySelector("#input-form");
 const addBookButton = document.querySelector("#add-book-button");
 const submitButton = document.querySelector("#submit-button");
 const cancelButton = document.querySelector("#cancel-button");
+const errorMessage = document.querySelector("#error-message");
 
 // "Show the dialog" button opens the dialog modally
 addBookButton.addEventListener("click", () => {
@@ -84,6 +93,10 @@ inputForm.addEventListener("submit", (event) => {
       ? true
       : false;
 
+    if (isDuplicateBook(title, author)) {
+      errorMessage.textContent = "This book is already in your library!";
+      return;
+    }
     // Output the form values
     addBookToLibrary(title, author, numberOfPages, hasRead);
     displayCards();
