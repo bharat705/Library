@@ -70,22 +70,88 @@ h3 {
   background-color: #ffffff;
 }
 
-dialog {
+#dialog {
+  width: clamp(300px, 450px, 90%);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
+
+  padding: 20px 20px 0;
+  background-color: #f5f5f5;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  max-width: 90%;
+  border-radius: 10px;
+
   z-index: 1000;
 }
 
-dialog::backdrop {
+#dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dialog-header h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  background-color: #ffffff;
+
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.checkbox-row {
+  padding: 10px 0px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.1;
+
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.button-row {
+  margin-top: 20px;
+  font-weight: 700;
+  color: #ffffff;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#submit-button {
+  background-color: #2ecc71;
+}
+
+#submit-button:hover {
+  background-color: #27ae60;
+}
+
+#cancel-button {
+  background-color: #e74c3c; /* Red for cancel */
+}
+
+#cancel-button:hover {
+  background-color: #c0392b; /* Red for cancel */
 }
 
 .book-stats {
@@ -187,12 +253,6 @@ dialog::backdrop {
   color: #1abc9c;
 }
 
-.no-of-pages,
-.read-status {
-  font-size: 1rem;
-  color: #555555;
-}
-
 .author-and-pages {
   display: flex;
   justify-content: space-between;
@@ -219,22 +279,4 @@ button {
 button:hover {
   background-color: #1abc9c; /* Turquoise on hover */
   transform: scale(1.05);
-}
-
-form {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"],
-input[type="number"],
-select {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
 }

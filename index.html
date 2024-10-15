@@ -23,9 +23,11 @@
     </div>
     <div class="dialog-container">
       <dialog id="dialog">
+        <div class="dialog-header">
+          <h3>Add New Book</h3>
+        </div>
         <form id="input-form" method="dialog">
           <div class="form-row">
-            <label for="title"></label>
             <input
               type="text"
               name="title"
@@ -35,7 +37,6 @@
             />
           </div>
           <div class="form-row">
-            <label for="author"></label>
             <input
               type="text"
               name="author"
@@ -45,7 +46,6 @@
             />
           </div>
           <div class="form-row">
-            <label for="no-of-pages"></label>
             <input
               type="number"
               name="no-of-pages"
@@ -54,12 +54,12 @@
               required
             />
           </div>
-          <div class="form-row">
-            <label for="read-status"> I have already read this book!</label>
+          <div class="checkbox-row form-row">
             <input type="checkbox" name="read-status" id="read-status" />
+            <label for="read-status"> I have already read this book!</label>
           </div>
 
-          <div class="form-row">
+          <div class="button-row form-row">
             <button id="cancel-button" type="submit">Cancel</button>
             <button type="submit" id="submit-button">Submit</button>
           </div>
