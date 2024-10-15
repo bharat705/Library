@@ -79,6 +79,7 @@ cancelButton.addEventListener("click", (event) => {
 });
 
 dialog.addEventListener("close", (e) => {
+  errorMessage.textContent = "";
   inputForm.reset();
 });
 
@@ -86,8 +87,8 @@ inputForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (inputForm.checkValidity()) {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
+    const title = document.getElementById("title").value.trim();
+    const author = document.getElementById("author").value.trim();
     const numberOfPages = document.getElementById("no-of-pages").value;
     const hasRead = document.getElementById("read-status").checked
       ? true
