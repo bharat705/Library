@@ -94,10 +94,10 @@ const cardsContainer = document.querySelector("#cards-container");
 
 function displayCards() {
   cardsContainer.innerHTML = "";
-  library.forEach((book) => {
+
+  library.forEach((book, index) => {
     let cardsDiv = document.createElement("div");
     cardsDiv.className = "cards";
-    cardsContainer.appendChild(cardsDiv);
 
     let titleDiv = document.createElement("div");
     titleDiv.className = "title";
@@ -111,14 +111,32 @@ function displayCards() {
 
     let pagesDiv = document.createElement("div");
     pagesDiv.className = "no-of-pages";
-    pagesDiv.textContent = book.numberOfPages;
+    pagesDiv.textContent = `${book.numberOfPages} pages`;
     cardsDiv.appendChild(pagesDiv);
 
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
     hasReadDiv.textContent = book.hasRead ? "Read Already" : "Yet to read";
     cardsDiv.appendChild(hasReadDiv);
+
+    let removeDiv = document.createElement("div");
+    let removeButton = document.createElement("button");
+    removeButton.className = "remove-button";
+    removeButton.textContent = "Remove";
+    removeDiv.appendChild(removeButton);
+    cardsDiv.appendChild(removeDiv);
+
+    removeButton.addEventListener("click", () => {
+      removeBook(index);
+    });
+
+    cardsContainer.appendChild(cardsDiv);
   });
+}
+
+function removeBook(index) {
+  library.splice(index, 1);
+  displayCards();
 }
 
 displayCards();
