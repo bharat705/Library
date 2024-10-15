@@ -1,41 +1,4 @@
-const library = [
-  {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    numberOfPages: 295,
-    hasRead: true,
-  },
-  {
-    title: "1984",
-    author: "George Orwell",
-    numberOfPages: 328,
-    hasRead: false,
-  },
-  {
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    numberOfPages: 281,
-    hasRead: true,
-  },
-  {
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    numberOfPages: 180,
-    hasRead: false,
-  },
-  {
-    title: "Moby Dick",
-    author: "Herman Melville",
-    numberOfPages: 635,
-    hasRead: false,
-  },
-  {
-    title: "Pride and Prejudice",
-    author: "Jane Austen",
-    numberOfPages: 432,
-    hasRead: true,
-  },
-];
+const library = [];
 
 function Book(title, author, numberOfPages, hasRead) {
   this.title = title;
