@@ -44,6 +44,11 @@ function Book(title, author, numberOfPages, hasRead) {
   this.hasRead = hasRead;
 }
 
+// Adding a method to the Book prototype
+Book.prototype.toggleReadStatus = function () {
+  this.hasRead = !this.hasRead;
+};
+
 function addBookToLibrary(title, author, numberOfPages, hasRead) {
   let newBook = new Book(title, author, numberOfPages, hasRead);
   library.push(newBook);
@@ -116,7 +121,10 @@ function displayCards() {
 
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
-    hasReadDiv.textContent = book.hasRead ? "Read Already" : "Yet to read";
+    let readToggleButton = document.createElement("button");
+    readToggleButton.className = "read-toggle-button";
+    readToggleButton.textContent = book.hasRead ? "Read" : "Yet to Read";
+    hasReadDiv.appendChild(readToggleButton);
     cardsDiv.appendChild(hasReadDiv);
 
     let removeDiv = document.createElement("div");
@@ -130,12 +138,21 @@ function displayCards() {
       removeBook(index);
     });
 
+    readToggleButton.addEventListener("click", () => {
+      toggleHasRead(index);
+    });
+
     cardsContainer.appendChild(cardsDiv);
   });
 }
 
 function removeBook(index) {
   library.splice(index, 1);
+  displayCards();
+}
+
+function toggleHasRead(index) {
+  library[index].toggleReadStatus();
   displayCards();
 }
 
