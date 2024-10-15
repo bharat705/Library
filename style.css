@@ -138,20 +138,28 @@ input[type="number"] {
   flex-wrap: wrap;
 }
 
-#submit-button {
+#submit-button,
+.read-state-toggle-button {
   background-color: #2ecc71;
 }
 
-#submit-button:hover {
+#submit-button:hover,
+.read-state-toggle-button:hover {
   background-color: #27ae60;
 }
 
-#cancel-button {
-  background-color: #e74c3c; /* Red for cancel */
+#cancel-button,
+.remove-button,
+#delete-all-button,
+.unread-state-toggle-button {
+  background-color: #e74c3c;
 }
 
-#cancel-button:hover {
-  background-color: #c0392b; /* Red for cancel */
+#cancel-button:hover,
+.remove-button:hover,
+#delete-all-button:hover,
+.unread-state-toggle-button:hover {
+  background-color: #c0392b;
 }
 
 .book-stats {
@@ -182,14 +190,6 @@ input[type="number"] {
 
 #books-unread {
   color: #e74c3c;
-}
-
-#delete-all {
-  background-color: #e74c3c;
-}
-
-#delete-all:hover {
-  background-color: #c0392b;
 }
 
 .main-content {

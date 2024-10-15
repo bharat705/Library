@@ -144,8 +144,12 @@ function displayCards() {
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
     let readToggleButton = document.createElement("button");
-    readToggleButton.className = "read-toggle-button";
-    readToggleButton.textContent = book.hasRead ? "Read" : "Yet to Read";
+    readToggleButton.className = book.hasRead
+      ? "read-state-toggle-button"
+      : "unread-state-toggle-button";
+    readToggleButton.textContent = book.hasRead
+      ? "Read Already"
+      : "Yet to Read";
     hasReadDiv.appendChild(readToggleButton);
     hasReadAndRemoveDiv.appendChild(hasReadDiv);
 
