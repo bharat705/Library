@@ -1,16 +1,17 @@
 const library = [];
 
-function Book(title, author, numberOfPages, hasRead) {
-  this.title = title;
-  this.author = author;
-  this.numberOfPages = numberOfPages;
-  this.hasRead = hasRead;
+class Book {
+  constructor(title, author, numberOfPages, hasRead) {
+    this.title = title;
+    this.author = author;
+    this.numberOfPages = numberOfPages;
+    this.hasRead = hasRead;
+  }
+  // Adding a method to the Book prototype
+  toggleReadStatus() {
+    this.hasRead = !this.hasRead;
+  }
 }
-
-// Adding a method to the Book prototype
-Book.prototype.toggleReadStatus = function () {
-  this.hasRead = !this.hasRead;
-};
 
 function isDuplicateBook(title, author) {
   return library.some(
@@ -21,8 +22,10 @@ function isDuplicateBook(title, author) {
 }
 
 function addBookToLibrary(title, author, numberOfPages, hasRead) {
-  let newBook = new Book(title, author, numberOfPages, hasRead);
+  const newBook = new Book(title, author, numberOfPages, hasRead);
   library.push(newBook);
+  displayCards();
+  updateStats();
 }
 
 const dialog = document.querySelector("#dialog");
@@ -37,11 +40,11 @@ addBookButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-cancelButton.addEventListener("click", (event) => {
+cancelButton.addEventListener("click", () => {
   dialog.close();
 });
 
-dialog.addEventListener("close", (e) => {
+dialog.addEventListener("close", () => {
   errorMessage.textContent = "";
   inputForm.reset();
 });
@@ -53,9 +56,7 @@ inputForm.addEventListener("submit", (event) => {
     const title = document.getElementById("title").value.trim();
     const author = document.getElementById("author").value.trim();
     const numberOfPages = document.getElementById("no-of-pages").value;
-    const hasRead = document.getElementById("read-status").checked
-      ? true
-      : false;
+    const hasRead = document.getElementById("read-status").checked;
 
     if (isDuplicateBook(title, author)) {
       errorMessage.textContent = "This book is already in your library!";
@@ -63,9 +64,6 @@ inputForm.addEventListener("submit", (event) => {
     }
     // Output the form values
     addBookToLibrary(title, author, numberOfPages, hasRead);
-    displayCards();
-    updateStats();
-
     dialog.close();
     inputForm.reset();
   } else {
@@ -107,6 +105,7 @@ function displayCards() {
 
     let hasReadDiv = document.createElement("div");
     hasReadDiv.className = "read-status";
+
     let readToggleButton = document.createElement("button");
     readToggleButton.className = book.hasRead
       ? "read-state-toggle-button"
@@ -114,6 +113,10 @@ function displayCards() {
     readToggleButton.textContent = book.hasRead
       ? "Read Already"
       : "Yet to Read";
+    readToggleButton.addEventListener("click", () => {
+      toggleHasRead(index);
+    });
+    
     hasReadDiv.appendChild(readToggleButton);
     hasReadAndRemoveDiv.appendChild(hasReadDiv);
 
@@ -121,19 +124,13 @@ function displayCards() {
     let removeButton = document.createElement("button");
     removeButton.className = "remove-button";
     removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", () => {
+      removeBook(index);
+    });
     removeDiv.appendChild(removeButton);
     hasReadAndRemoveDiv.appendChild(removeDiv);
 
     cardsDiv.appendChild(hasReadAndRemoveDiv);
-
-    removeButton.addEventListener("click", () => {
-      removeBook(index);
-    });
-
-    readToggleButton.addEventListener("click", () => {
-      toggleHasRead(index);
-    });
-
     cardsContainer.appendChild(cardsDiv);
   });
 }
